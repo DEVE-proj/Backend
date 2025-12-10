@@ -1,0 +1,18 @@
+User:
+  Controllers:
+    files:
+      - userController.cs
+  Models:
+    Repos:
+      files:
+        - userRepo.cs
+    DTOs:
+      files:
+        - userDto.cs
+    Services:
+      files:
+        - userService.cs
+
+Alliance: "User"
+
+Clan: "User"

@@ -1,0 +1,4 @@
+Migrations/
+obj/
+bin/
+*.Development.json
