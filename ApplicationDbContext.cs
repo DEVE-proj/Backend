@@ -11,17 +11,21 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
         modelBuilder.Entity<User>(entity =>
         {
 
             entity.ToTable("users");
 
+            modelBuilder.Entity<User>()
+            .HasIndex(u => u.Login)
+            .IsUnique();
+
             entity.HasKey(e => e.Id).HasName("id");
             entity.Property(e => e.Name).HasColumnName("name").IsRequired();
             entity.Property(e => e.Login).HasColumnName("login").IsRequired();
+            entity.HasIndex(e => e.Login).IsUnique().HasDatabaseName("uq_users_login");;
             entity.Property(e => e.Password).HasColumnName("password").IsRequired();
             entity.Property(e => e.userTableId).HasColumnName("user_table_id").IsRequired();
         });
-    }
+    }   
 }

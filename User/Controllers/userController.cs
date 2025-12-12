@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -6,16 +7,29 @@ using Microsoft.AspNetCore.Mvc;
 public class UserController : ControllerBase
 {
 
-    private readonly IUserRepo _userRepo;
+    private readonly IUserService _userService;
 
-    public UserController(IUserRepo userRepo)
+    public UserController(IUserService userService)
     {
-        _userRepo = userRepo;
+        _userService = userService;
     }
 
-    [HttpGet("get")]
-    public async Task<User?> GetMyName()
+    [HttpGet]
+    public async Task<GetUserDataDto?> GetUserByLogin([FromQuery] string login)
     {
-        return await _userRepo.GetTestData();
+        var result = await _userService.GetUserByLogin(login);
+
+        if(result != null)
+        {
+            return new GetUserDataDto(){Name = result.Name};
+        }
+
+        return null;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddUser([FromBody] IUserDto UserData)
+    {
+       return Ok("");
     }
 }
