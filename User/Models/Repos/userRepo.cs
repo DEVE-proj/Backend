@@ -2,8 +2,8 @@ using Microsoft.EntityFrameworkCore;
 
 public interface IUserRepo
 {
-    Task<User?> GetUserByLogin(string login);
-    Task AddUser(User UserData);
+    Task<User?> GetUser(string login, string password);
+    Task CreateUser(User UserData);
     Task<int> SaveChangesAsync();
 }
 
@@ -16,12 +16,12 @@ public class UserRepo : IUserRepo
         _context = context;
     }
 
-    public async Task<User?> GetUserByLogin(string login)
+    public async Task<User?> GetUser(string login, string password)
     {
-        return await _context.Users.Where(e => e.Login == login).FirstOrDefaultAsync();
+        return await _context.Users.Where(e => e.Login == login).Where(e => e.Password == password).FirstOrDefaultAsync();
     }
 
-    public async Task AddUser(User UserData)
+    public async Task CreateUser(User UserData)
     {
         await _context.Users.AddAsync(UserData);
     }

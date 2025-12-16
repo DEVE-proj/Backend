@@ -14,22 +14,27 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
-    [HttpGet]
-    public async Task<GetUserDataDto?> GetUserByLogin([FromQuery] string login)
+    [HttpPost("login")]
+    public async Task<ActionResult<GetUserDto?>> GetUser([FromBody] LoginUserDto userData)
     {
-        var result = await _userService.GetUserByLogin(login);
+        var result = await _userService.GetUser(userData.login, userData.password);
 
         if(result != null)
         {
-            return new GetUserDataDto(){Name = result.Name};
+            return Ok(new GetUserDto(){Name = result.Name});
         }
 
-        return null;
+        return Unauthorized();
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddUser([FromBody] IUserDto UserData)
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserDto userData)
     {
-       return Ok("");
+        if(await _userService.CreateUser(userData))
+        {
+            return Ok("user was successfully created!");
+        }
+        else
+            return BadRequest("Failed to create user");
     }
 }
