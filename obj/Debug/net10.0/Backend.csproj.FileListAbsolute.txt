@@ -384,3 +384,9 @@
 /home/marcus/NeoLab/DEVE/Backend/obj/Debug/net10.0/Backend.pdb
 /home/marcus/NeoLab/DEVE/Backend/obj/Debug/net10.0/Backend.genruntimeconfig.cache
 /home/marcus/NeoLab/DEVE/Backend/obj/Debug/net10.0/ref/Backend.dll
+/home/marcus/NeoLab/DEVE/Backend/bin/Debug/net10.0/openapitools.json
+/home/marcus/NeoLab/DEVE/Backend/bin/Debug/net10.0/generated-client/package.json
+/home/marcus/NeoLab/DEVE/Backend/bin/Debug/net10.0/generated-client/tsconfig.esm.json
+/home/marcus/NeoLab/DEVE/Backend/bin/Debug/net10.0/generated-client/tsconfig.json
+/home/marcus/NeoLab/DEVE/Backend/bin/Debug/net10.0/openapi-config.json
+/home/marcus/NeoLab/DEVE/Backend/bin/Debug/net10.0/swagger.json

@@ -1,17 +1,10 @@
 {
-  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
-  "spaces": 2,
-  "generator-cli": {
-    "version": "7.20.0"
-  },
   "generatorName": "typescript-axios",
-  "inputSpec": "openapi.json",
+  "inputSpec": "swagger.json",
   "outputDir": "generated-client",
   "additionalProperties": {
     "npmName": "@deve-proj/deve-sdk",
     "npmVersion": "1.0.0",
-    "npmRepository": "https://npm.pkg.github.com",
-    "snapshot": false,
     "withInterfaces": true,
     "useSingleRequestParameter": true,
     "supportsES6": true

@@ -3,7 +3,7 @@ using BCrypt.Net;
 
 public interface IUserService
 {
-    public Task<Guid?> CreateUser(CreateUserDto userData);
+    public Task<Guid?> CreateUser(CreateUserRequestDto userData);
     public Task<User?> GetUser(string login, string password);
     public Task<bool> UpdateUserLogin(string newLogin);
     public Task<bool> UpdateUserName(string newName);
@@ -22,7 +22,7 @@ public class UserService : IUserService
         _userRepo = userRepo;
     }
 
-    public async Task<Guid?> CreateUser(CreateUserDto userData)
+    public async Task<Guid?> CreateUser(CreateUserRequestDto userData)
     {
         try
         {

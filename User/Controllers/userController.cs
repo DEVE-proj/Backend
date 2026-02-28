@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using System.IdentityModel.Tokens.Jwt;
 using DeveSecurity;
 using Microsoft.AspNetCore.Authorization;
+using Swashbuckle.AspNetCore.Annotations;
 
 [ApiController]
 [Route("/user")]
@@ -69,15 +70,15 @@ public class UserController : ControllerBase
     /// <returns>Status of creating and JWT</returns>
     [HttpPost]
     [AllowAnonymous]
-    [ProducesResponseType(typeof(LoginUserDto), StatusCodes.Status201Created)]
-    public async Task<IActionResult> CreateUser([FromBody] CreateUserDto userData)
+    [ProducesResponseType(typeof(CreateUserResponseDto), StatusCodes.Status201Created)]
+    public async Task<IActionResult> CreateUser([FromBody] CreateUserRequestDto userData)
     {
         try
         {
             Guid userId = (Guid)await _userService.CreateUser(userData);
 
             return Ok(new
-                {
+                CreateUserResponseDto{
                     Message = "User was successfully created!",
                     Token = Auth.GenerateJwt(new GetUserDto{Name = userData.Name, Login = userData.Login, UserId = userId})
                 }

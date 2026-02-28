@@ -151,17 +151,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
+                "$ref": "#/components/schemas/CreateUserRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
+                "$ref": "#/components/schemas/CreateUserRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUserDto"
+                "$ref": "#/components/schemas/CreateUserRequestDto"
               }
             }
           }
@@ -172,17 +172,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoginUserDto"
+                  "$ref": "#/components/schemas/CreateUserResponseDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoginUserDto"
+                  "$ref": "#/components/schemas/CreateUserResponseDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LoginUserDto"
+                  "$ref": "#/components/schemas/CreateUserResponseDto"
                 }
               }
             }
@@ -193,7 +193,7 @@
   },
   "components": {
     "schemas": {
-      "CreateUserDto": {
+      "CreateUserRequestDto": {
         "type": "object",
         "properties": {
           "name": {
@@ -205,6 +205,20 @@
             "nullable": true
           },
           "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateUserResponseDto": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "token": {
             "type": "string",
             "nullable": true
           }
